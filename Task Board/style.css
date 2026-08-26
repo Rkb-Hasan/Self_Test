@@ -56,10 +56,10 @@ button {
   padding: 0.6rem 1rem;
   border-radius: 6px;
   border: none;
-  background: var(--accent);
   color: #000;
   font-weight: 600;
   cursor: pointer;
+  background-color: var(--accent);
 }
 
 button:hover {
@@ -102,34 +102,36 @@ button:hover {
   border-radius: 6px;
   border: 1px solid var(--border);
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.task-actions {
+.task-action {
+  border: 1px solid red;
   display: flex;
-  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.task-actions button {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
-  background: var(--border);
-  color: var(--text-main);
+.task-action button {
+  /* font-size: 0.75rem; */
+  background-color: transparent;
+  /* border: 1px solid red; */
+  padding: 0;
+  border-radius: 0;
 }
 
-.task-actions button.delete-btn {
+.task-action button img {
+  max-width: 16px;
+  max-height: 16px;
+}
+
+/* .task-actions button.delete-btn {
   background: var(--danger);
   color: #fff;
-}
+} */
 
 footer {
   margin-top: 2rem;
   display: flex;
   justify-content: flex-end;
-}
-
-.danger-btn {
-  background: var(--danger);
-  color: #fff;
 }
