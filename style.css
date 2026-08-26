@@ -1,0 +1,135 @@
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --danger: #ef4444;
+  --border: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  max-width: 1000px;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.add-task-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+input[type="text"] {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-main);
+  outline: none;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.board-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.column {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  min-height: 350px;
+}
+
+.column h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--accent);
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Dynamic Task Items */
+.task-item {
+  background: var(--bg-color);
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.task-actions button {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  background: var(--border);
+  color: var(--text-main);
+}
+
+.task-actions button.delete-btn {
+  background: var(--danger);
+  color: #fff;
+}
+
+footer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.danger-btn {
+  background: var(--danger);
+  color: #fff;
+}
