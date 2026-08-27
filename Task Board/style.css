@@ -60,10 +60,11 @@ button {
   font-weight: 600;
   cursor: pointer;
   background-color: var(--accent);
+  opacity: 0.9;
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .board-container {
@@ -98,37 +99,65 @@ button:hover {
 /* Dynamic Task Items */
 .task-item {
   background: var(--bg-color);
+  opacity: 0.9;
   padding: 0.75rem;
   border-radius: 6px;
   border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
 }
 
 .task-action {
-  border: 1px solid red;
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .task-action button {
-  /* font-size: 0.75rem; */
-  background-color: transparent;
-  /* border: 1px solid red; */
+  margin: 0;
+  margin-left: auto;
   padding: 0;
-  border-radius: 0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1e222b;
+  border: 1px solid rgba(0, 213, 255, 0);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.task-action button:hover {
+  background: #252b36;
+  border-color: rgba(0, 212, 255, 1);
+  box-shadow:
+    0 0 10px rgba(0, 212, 255, 0.5),
+    0 0 25px rgba(0, 212, 255, 0.3);
+}
+
+.task-action button:last-child {
+  margin-left: 10px;
+  background: #1a1012;
+  border: 1px solid transparent;
+}
+
+.task-action button:last-child:hover {
+  background: #2b1418;
+  border-color: rgba(255, 46, 91, 0.8);
+  box-shadow:
+    0 0 12px rgba(255, 46, 91, 0.7),
+    0 0 25px rgba(255, 0, 0, 0.4);
 }
 
 .task-action button img {
-  max-width: 16px;
-  max-height: 16px;
+  max-width: 18px;
+  max-height: 18px;
+  display: block;
 }
 
-/* .task-actions button.delete-btn {
+.delete-btn {
   background: var(--danger);
-  color: #fff;
-} */
+  color: var(--text-main);
+}
 
 footer {
   margin-top: 2rem;

@@ -16,11 +16,11 @@ function populateTask(items) {
     if (itemList) {
       const itemHTML = `<li class="task-item" data-id=${item.id} data-status=${item.status}>
        <p class="task-action">
-          <span>  ${item.text}</span>
-            <button style="${item.status == "done" ? "display: none;" : ""}"  id="update">
-               <img data-id=${item.id} id="update" src="./images/edit.png" alt="edit" />
+          ${item.text}
+            <button style="cursor: ${item.status === "done" ? "default" : "pointer"}">
+               <img data-id=${item.id} id="update" src="./images/${item.status}.png" alt=${item.status} />
             </button>
-            <button   class="danger-btn">
+            <button >
                <img data-id=${item.id} id="delete" src="./images/delete.png" alt="delete" />
             </button>
        </p>
