@@ -48,7 +48,6 @@ function addTask(e) {
 }
 
 function deleteTask(el) {
-  console.log("click");
   const index = tasks.findIndex((task) => task.id === Number(el.dataset.id));
 
   if (index !== -1) {
@@ -78,12 +77,9 @@ function updateTaskStatus(el) {
 
 function action(e) {
   const el = e.target;
-  console.log(el);
 
   if (el.matches("#delete")) {
-    console.log("yes");
     deleteTask(el);
-    // console.log(el);
   } else if (el.matches("#update")) {
     updateTaskStatus(el);
   }
