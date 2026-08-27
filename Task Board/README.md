@@ -43,5 +43,5 @@ Clicking a task's status button advances it to the next stage. Since Done is the
 task-board/
 ├── index.html
 ├── style.css
-└── script.js
+└── app.js
 ```
