@@ -17,7 +17,7 @@ function populateTask(items) {
       const itemHTML = `<li class="task-item" data-id=${item.id} data-status=${item.status}>
        <p class="task-action">
           ${item.text}
-            <button style="cursor: ${item.status === "done" ? "default" : "pointer"}">
+            <button style="display: ${item.status === "done" && "none"}">
                <img data-id=${item.id} id="update" src="./images/${item.status}.png" alt=${item.status} />
             </button>
             <button >
