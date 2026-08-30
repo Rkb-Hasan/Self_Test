@@ -97,23 +97,23 @@ function hello() {
 // note the time is variable according to net speed or cache or other thing but the race condition is true
 
 // -------------------------------------------------------
-function first(callback) {
-  console.log("1");
+// function first(callback) {
+//   console.log("1");
 
-  setTimeout(() => {
-    console.log("2");
-    callback();
-  }, 0);
+//   setTimeout(() => {
+//     console.log("2");
+//     callback();
+//   }, 0);
 
-  console.log("3");
-}
+//   console.log("3");
+// }
 
-function second() {
-  console.log("4");
-}
+// function second() {
+//   console.log("4");
+// }
 
-first(second);
+// first(second);
 
-console.log("5");
+// console.log("5");
 
 // hell
