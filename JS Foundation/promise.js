@@ -36,21 +36,21 @@
 
 // -------------------
 
-const p1 = Promise.resolve("A");
+// const p1 = Promise.resolve("A");
 
-const p2 = p1.then(() => {
-  const innerPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("B");
-    }, 5000);
-  });
-  console.log(innerPromise);
-  return innerPromise;
-});
-console.log(p2);
-p2.then((value) => {
-  console.log(value);
-});
+// const p2 = p1.then(() => {
+//   const innerPromise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("B");
+//     }, 5000);
+//   });
+//   console.log(innerPromise);
+//   return innerPromise;
+// });
+// console.log(p2);
+// p2.then((value) => {
+//   console.log(value);
+// });
 
 // What is p1's state?
 // What does the first .then() callback return?
@@ -89,3 +89,34 @@ p2.then((value) => {
 // only when innerPromise fulfilled or rejected p1.then promise also adopts the state value of the innerPromise
 // p1.then() returns a promise not a value that adopts directly the innerPromise
 // thus p2.then() callback executes when the innerPromise is resolved with a value and the p1.then() promise adopts the state and value
+
+// gpt test----------------------------------------------------------------------------
+console.log("1");
+
+const p1 = Promise.resolve("A");
+// console.log(p1);
+const p2 = p1.then((value) => {
+  console.log("2", value);
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("3");
+      resolve("B");
+    }, 0);
+  });
+});
+
+console.log("4");
+
+const p3 = p2.then((value) => {
+  console.log("5", value);
+  return "C";
+});
+
+p3.then((value) => {
+  console.log("6", value);
+});
+
+console.log("7");
+
+// op: "1>>4>>7">>("2","A")>>"3">>("5","B")>>("6","C")
