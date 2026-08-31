@@ -91,32 +91,149 @@
 // thus p2.then() callback executes when the innerPromise is resolved with a value and the p1.then() promise adopts the state and value
 
 // gpt test----------------------------------------------------------------------------
-console.log("1");
+// console.log("1");
 
-const p1 = Promise.resolve("A");
+// const p1 = Promise.resolve("A");
 // console.log(p1);
-const p2 = p1.then((value) => {
-  console.log("2", value);
+// const p2 = p1.then((value) => {
+//   console.log("2", value);
 
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log("3");
-      resolve("B");
-    }, 0);
-  });
-});
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log("3");
+//       resolve("B");
+//     }, 0);
+//   });
+// });
 
-console.log("4");
+// console.log("4");
 
-const p3 = p2.then((value) => {
-  console.log("5", value);
-  return "C";
-});
+// const p3 = p2.then((value) => {
+//   console.log("5", value);
+//   return "C";
+// });
 
-p3.then((value) => {
-  console.log("6", value);
-});
+// p3.then((value) => {
+//   console.log("6", value);
+// });
 
-console.log("7");
+// console.log("7");
 
 // op: "1>>4>>7">>("2","A")>>"3">>("5","B")>>("6","C")
+
+// const p = Promise.resolve("A");
+
+// const p2 = p
+//   .then((value) => {
+//     console.log(value);
+//     return "B";
+//   })
+//   .then((val) => {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         console.log(val);
+//         reject("failed");
+//       }, 200);
+//     });
+//   })
+//   .then((val) => {
+//     console.log(val);
+//     return "C";
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//     return "Default";
+//   })
+//   .then((val) => {
+//     console.log(val);
+//   })
+//   .finally(() => {
+//     console.log("print from final");
+//   });
+
+// console.log(p2);
+
+// OP:
+// Promise ​<state>: "fulfilled" <value>: undefined
+// A
+// B
+// failed
+// Default
+// print from final
+
+// the .catch() callback recvs the err and makes the promise state fulfilled from reject weather with a returned val from catch() callback or with undefined if nothing returned ,
+// thus the chain continues with a fulfilled state and the returned val from .catch() callback
+// .finally() doesnt recv a val or state it just pass through the previues state and val untouched in the chain.
+
+// gpt another tricky-------------------------------------------------------------------------------
+// const userPromise = Promise.resolve({ id: 1, name: "Rakib" });
+
+// const dashboardPromise = userPromise
+//   .then((user) => {
+//     console.log("1:", user.name);
+
+//     return new Promise((resolve) => {
+//       setTimeout(() => {
+//         console.log("2: orders loaded");
+
+//         resolve([
+//           { id: 101, total: 500 },
+//           { id: 102, total: 800 },
+//         ]);
+//       }, 300);
+//     });
+//   })
+//   .then((orders) => {
+//     console.log("3:", orders.length);
+
+//     if (orders.length > 1) {
+//       throw "Too many orders";
+//     }
+
+//     return orders;
+//   })
+//   .then((orders) => {
+//     console.log("4:", orders);
+//     return "Dashboard ready";
+//   })
+//   .catch((error) => {
+//     console.log("5:", error);
+//     return "Dashboard fallback";
+//   })
+//   .then((message) => {
+//     console.log("6:", message);
+//   })
+//   .finally(() => {
+//     console.log("7: loading finished");
+//   });
+
+// console.log("8:", dashboardPromise);
+
+// OP: "8:", <Pending> >> ("1:", Rakib);>> "2: orders loaded">> console.log("3:", 2); >>("5:", Too many orders) >>("6:", Dashboard callback); >> ("7: loading finished") and the first console >> "8:", <fulfilled , undefined> updates now
+
+// at first console.log("8:", dashboardPromise); is pending because the the chain yet not completed because of the timer all .then and catch and finally attached but for the first.then() pending state they can be exec so as the dashboardPromise is pending at first
+
+// userPromise >> fulfilled, { id: 1, name: "Rakib" }
+// ↓
+// first .then() returned Promise >> fulfilled, [ { id: 101, total: 500 },{ id: 102, total: 800 },]
+
+//       ↓
+// second .then() returned Promise rejected, resason:too many orders
+//       ↓
+// third .then() returned Promise skipped
+//       ↓
+// .catch() returned Promise fulfilled dashboard fallback
+//       ↓
+// next .then() returned Promise fulfilled undefined
+//       ↓
+// .finally() returned Promise  fulfilled undefined
+
+// 2nd.the() promise rejected and 3rd .then() gets skipped
+
+// When .catch() does: return "Dashboard fallback";
+// state = fulfilled
+// value = "Dashboard fallback"
+
+// dashboardPromise - <fulfilled , undefined>
+
+// exec order : 8,1,2,3,5,6,7
