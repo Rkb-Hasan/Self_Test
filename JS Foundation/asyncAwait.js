@@ -44,36 +44,36 @@
 
 // Note: the await exec line is sync but the promise must resolved before moving forward if resolved immediately the lines after the await have to wait until sync operation finishes
 
-function getData() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log("A");
-      resolve("DATA");
-    }, 200);
-  });
-}
-let value;
-async function test() {
-  console.log("B");
+// function getData() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log("A");
+//       resolve("DATA");
+//     }, 200);
+//   });
+// }
+// let value;
+// async function test() {
+//   console.log("B");
 
-  value = await getData();
+//   value = await getData();
 
-  console.log("C", value);
+//   console.log("C", value);
 
-  return "DONE";
-}
-console.log("1");
+//   return "DONE";
+// }
+// console.log("1");
 
-const p = test();
-console.log(p); // pending now after the return DONE line fulfilled with DONE
-console.log(value); //undefined now later when promise finish it will be available with val DATA
-console.log("2");
+// const p = test();
+// console.log(p); // pending now after the return DONE line fulfilled with DONE
+// console.log(value); //undefined now later when promise finish it will be available with val DATA
+// console.log("2");
 
-p.then((value) => {
-  console.log("3", value);
-});
+// p.then((value) => {
+//   console.log("3", value);
+// });
 
-console.log("4");
+// console.log("4");
 
 // Exact output order
 // When test() starts, which lines execute synchronously?
