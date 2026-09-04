@@ -120,4 +120,6 @@ function introduce(age, city) {
 
 introduce.call(user, 28, "Dhaka");
 
+// aply take array as second param sp it can be fed the op of map or any the other array
+
 introduce.apply(user, [28, "Dhaka"]);
