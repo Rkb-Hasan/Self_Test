@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IntersectionObserver</title>
+  </head>
+  <body>
+    <div class="card-container" style="min-height: 1000px">
+      <p class="card">First card</p>
+      <p class="card">card2</p>
+      <p class="card">card3</p>
+      <p class="card">card4</p>
+      <p class="card">card5</p>
+      <p class="card">card6</p>
+      <p class="card">card7</p>
+      <p class="card">card8</p>
+      <p class="card">card9</p>
+      <p class="card">Last card</p>
+    </div>
+
+    <style>
+      .card {
+        border: 2px solid black;
+        padding: 50px;
+        transition:
+          font-weight 0.5s ease-in,
+          background-color 0.5s ease-in;
+      }
+      .card.active {
+        font-weight: bold;
+        background-color: aquamarine;
+      }
+    </style>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
