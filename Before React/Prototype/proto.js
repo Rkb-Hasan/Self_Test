@@ -28,3 +28,47 @@ const fresh = Object.create(null, {
   },
 });
 console.log(fresh);
+
+// =======================================
+
+function Me(name) {
+  this.name = name;
+}
+
+Me.prototype.role = "live";
+
+// newMe inherit the protoType of contructor Me; Me inherit inherit the prototype of Object
+const newMe = new Me("rakib");
+// shadows the prototype role
+newMe.role = "enjoy";
+console.log(newMe);
+// but Me prototype role exists
+console.log(Me.prototype.role);
+console.log(Me);
+
+// ===========inheritance==================
+function Airmen(name) {
+  this.name = name;
+}
+
+// writes into the proto of Airmen contruscor
+Airmen.prototype.basic = function () {
+  console.log(this.name + "Parade");
+};
+// newA inherits proto from Airmen
+const newA = new Airmen("chodu");
+
+function Officer(name, role) {
+  // call the Airmen constructor to set the name property instead of writing again
+  Airmen.call(this, name);
+  this.role = role;
+}
+
+// rewrite the Ofiicer prototype with Airmen proto
+Officer.prototype = Object.create(Airmen.prototype);
+const newO = new Officer("modhu", "adjutant");
+// look for basic in officer proto not found
+// further look airmen proto found
+newO.basic();
+
+console.log(Officer);
