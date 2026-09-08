@@ -6,6 +6,44 @@
     <title>DOM TASK</title>
   </head>
   <body>
+    <style>
+      :root,
+      body {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      #taskList {
+        margin: 0 5px;
+        padding: 0 0 0 25px; /* Added 25px padding to the left for the numbers */
+        max-width: 50%;
+        min-height: 200px;
+        border: 2px solid rgba(128, 128, 128, 0.479);
+        list-style: decimal;
+        list-style-position: outside;
+
+        background-color: rgba(186, 236, 236, 0.664);
+      }
+
+      .taskIteam {
+        padding: 5px;
+        border: 2px solid rgb(2, 93, 76);
+        margin-bottom: 5px;
+      }
+
+      .taskIteam p {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin: 0;
+      }
+      p :not(:first-child) {
+        margin-left: auto;
+        background-color: rgba(180, 247, 168, 0.804);
+        padding: 3px;
+      }
+    </style>
+
     <div class="app">
       <h1>Task Manager</h1>
 
