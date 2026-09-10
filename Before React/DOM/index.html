@@ -6,6 +6,22 @@
     <title>DOM</title>
   </head>
   <body>
+    <style>
+      .parent {
+        border: 1px solid black;
+        padding: 25px;
+        width: 300px;
+      }
+      .imm {
+        border: 1px solid rgb(12, 30, 227);
+        padding: 25px;
+        width: 200px;
+      }
+      .child {
+        border: 1px solid rgb(194, 25, 25);
+      }
+    </style>
+
     <div>
       <div class="card"></div>
       <div class="card"></div>
@@ -19,6 +35,15 @@
       <div class="card"></div>
     </div>
 
+    <!-- event test -->
+    <div class="parent">
+      parent
+
+      <div class="imm">
+        <button class="child">child</button>
+      </div>
+    </div>
+    <p id="demo"></p>
     <script src="./DOM.js"></script>
   </body>
 </html>
