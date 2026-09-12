@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <style>
+      form {
+        max-width: 300px;
+        padding: 30px;
+        border: 2px solid rgba(215, 195, 195, 0.24);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    </style>
+
+    <form id="registrationForm">
+      <label for="username">
+        username:
+        <input type="text" name="username" id="username"
+      /></label>
+      <label for="email">
+        Email:
+        <input type="email" name="email" id="email" />
+      </label>
+
+      <label>
+        <input type="checkbox" name="terms" id="terms" />
+        Accept terms
+      </label>
+
+      <select name="country" id="country">
+        <option value="">Choose country</option>
+        <option value="bd">Bangladesh</option>
+        <option value="in">India</option>
+        <option value="us">USA</option>
+      </select>
+
+      <button type="submit">Register</button>
+    </form>
+    <script src="./script.js"></script>
+  </body>
+</html>
